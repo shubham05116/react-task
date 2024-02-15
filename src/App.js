@@ -5,16 +5,14 @@ import Toast from './components/Toast';
 import ErrorToast from './components/ErrorToast';
 import { AsYouType } from 'libphonenumber-js';
 
-
 function App() {
+
   //State for handling the input fields
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [contactNumber, setContactNumber] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [requiredField, setRequiredField] = useState(false)
-
 
   //BirthDate State
   const [day, setDay] = useState('');
@@ -42,15 +40,12 @@ function App() {
   const [showEmailStar, setEmailShowStar] = useState(false);
   const [showContactStar, setContactShowStar] = useState(false);
 
-
   //Password Error messages State:
   const [upperCase, setUpperCase] = useState(false);
   const [lowerCase, setLowerCase] = useState(false);
   const [number, setNumber] = useState(false);
   const [symbols, setSymbols] = useState(false);
   const [length, setLength] = useState(false)
-
-
 
   //Handling Functions for the input fields
   const handleFullName = (e) => {
@@ -64,7 +59,6 @@ function App() {
     }
 
     setFullName(fullNameValue);
-
     if (fullNameValue === "") {
       setNameError(false);
       setNameShowStar(false);
@@ -72,7 +66,6 @@ function App() {
       setNameShowStar(true);
     }
   };
-
 
   const handleEmail = (e) => {
     const emailValue = e.target.value;
@@ -91,7 +84,7 @@ function App() {
     setEmail(emailValue)
     if (emailValue.length > 0) {
       setEmailShowStar(true);
-    } else  {
+    } else {
       setEmailShowStar(false);
     }
 
@@ -102,7 +95,6 @@ function App() {
 
     // Check for special characters
     let specialCharRegex = /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g
-
     const hasSpecialChar = specialCharRegex.test(pass);
 
     // Check for uppercase letters
@@ -120,7 +112,6 @@ function App() {
     const hasValidLength = pass.length >= 8;
 
     // Update state variables based on conditions
-    
     setUpperCase(!hasUpperCase);
     setLowerCase(!hasLowerCase);
     setNumber(!hasNumber);
@@ -137,7 +128,6 @@ function App() {
         setPassError(false);
       }
     }
-
     setPassword(pass);
 
     if (pass.length > 0) {
@@ -147,35 +137,34 @@ function App() {
     }
   };
 
-const handleContactNumber = (e) => {
-  const number =e.target.value;
-  const numberRegex = /^(\+?1 ?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  const handleContactNumber = (e) => {
+    const number = e.target.value;
+    const numberRegex = /^(\+?1 ?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-  // const formattedNumber = number.replace(numberRegex, "($2) $3-$4");
-  // console.log(new AsYouType.input(e.target.value)
-  // )
-// let formatt = new AsYouType().input(number)
-// Outputs: '+1 213 373 4'
+    // const formattedNumber = number.replace(numberRegex, "($2) $3-$4");
+    // console.log(new AsYouType.input(e.target.value)
+    // )
+    // let formatt = new AsYouType().input(number)
+    // Outputs: '+1 213 373 4'
 
-let formatt=new AsYouType('US').input(number)
+    let formatNumber = new AsYouType('US').input(number)
+    if (number.length === 0) {
+      setContactError(false);
+    } else {
+      if (!numberRegex.test(number)) {
+        setContactError(true);
+      } else {
+        setContactError(false);
+      }
+    }
 
-if (number.length === 0) {
-  setContactError(false);
-} else {
-  if (!numberRegex.test(number)) {
-    setContactError(true);
-  } else {
-    setContactError(false);
-  }
-}
-
-setContactNumber(formatt);
-if (number.length > 0) {
-  setContactShowStar(true);
-} else {
-  setContactShowStar(false);
-}
-};
+    setContactNumber(formatNumber);
+    if (number.length > 0) {
+      setContactShowStar(true);
+    } else {
+      setContactShowStar(false);
+    }
+  };
 
   const handleConfirmPassword = (e) => {
     if (e.target.value !== password) {
@@ -215,7 +204,7 @@ if (number.length > 0) {
   const populateYears = () => {
     const years = [];
     const currentYear = new Date().getFullYear();
-    for (let i = currentYear; i <= currentYear + 100; i++) {
+    for (let i = currentYear; i >= currentYear - 100; i--) {
       years.push(<option key={i}>{i}</option>);
     }
     return years;
@@ -224,28 +213,29 @@ if (number.length > 0) {
     setDay(e.target.value);
     if (e.target.value === 'Day') {
       setDayError(true);
+      setErrorToast(true)
     }
     else {
       setDayError(false);
     }
-
   };
 
   const handleMonthChange = (e) => {
     setMonth(e.target.value);
     if (e.target.value === 'Month') {
       setMonthError(true);
+      setErrorToast(true)
     }
     else {
       setMonthError(false);
     }
-
   };
 
   const handleYearChange = (e) => {
     setYear(e.target.value);
     if (e.target.value === 'Year') {
       setYearError(true);
+      setErrorToast(true)
     }
     else {
       setYearError(false);
@@ -254,47 +244,53 @@ if (number.length > 0) {
 
   //Submit Handler for the form
   const submitHandler = () => {
+    let hasEmptyField = false;
+
     if (fullName === '') {
-      console.log("error while submitting")
       setNameError(true);
-      setErrorToast(true)
-      setRequiredField(true);
+      hasEmptyField = true;
     }
     if (password === '') {
-      setPassError(true)
-      setErrorToast(true)
+      setPassError(true);
+      hasEmptyField = true;
     }
-    if (contactNumber === "") {
+    if (contactNumber === '') {
       setContactError(true);
-      setErrorToast(true)
+      hasEmptyField = true;
     }
     if (confirmPassword === '') {
-      setConfirmPasswordError(true)
-      setErrorToast(true)
+      setConfirmPasswordError(true);
+      hasEmptyField = true;
     }
     if (email === '') {
       setEmailError(true);
-      setErrorToast(true)
+      hasEmptyField = true;
     }
     if (day === '') {
-      setErrorToast(true)
       setDayError(true);
+      hasEmptyField = true;
     }
     if (month === '') {
-      setErrorToast(true)
       setMonthError(true);
+      hasEmptyField = true;
     }
     if (year === '') {
-      setErrorToast(true)
       setYearError(true);
+      hasEmptyField = true;
     }
-    else if (!nameError && !emailError && !contactError && !passError && !confirmPasswordError) {
-      setToast(true);
-      setErrorToast(false)
-    }
-    else if (nameError || emailError || contactError || passError || confirmPasswordError) {
-      setToast(false);
+
+    if (hasEmptyField) {
       setErrorToast(true);
+      return;
+    }
+
+    // If no empty fields, proceed with other validations
+    if (!nameError && !emailError && !contactError && !passError && !confirmPasswordError && !dayError && !monthError && !yearError) {
+      setToast(true);
+      setErrorToast(false);
+    } else {
+      setErrorToast(true);
+      setToast(false);
     }
   }
 
@@ -344,7 +340,6 @@ if (number.length > 0) {
                 showNameStar ? "" : <span className="nameStar">*</span>
               }
               <input formNoValidate
-
                 type="text"
                 name='fullName'
                 placeholder={`Full Name`}
@@ -354,14 +349,12 @@ if (number.length > 0) {
                 required="required"
               />
             </label><br />
-
             {
               nameError ?
                 <p className="error-message">Enter Your Full Name without Extra spaces
                 </p> :
                 ""
             }
-
           </div>
 
           <div className="input-container">
@@ -378,7 +371,6 @@ if (number.length > 0) {
                 onChange={handleContactNumber}
                 className={contactError ? 'error-border' : 'input-field'} />
             </label> <br />
-
             {
               contactError ?
                 <p className="error-message">Enter Your Contact Number in canadian format
@@ -388,7 +380,6 @@ if (number.length > 0) {
           </div>
           <div className="input-container">
             <label htmlFor="">BirthDate
-
             </label> <br />
             <div className='date-container' >
               <div className='
@@ -397,7 +388,6 @@ if (number.length > 0) {
                   <option>Day
                   </option>
                   {populateDays()}
-
                 </select>
                 <div>
                   {
@@ -406,7 +396,6 @@ if (number.length > 0) {
                       </p> :
                       ""
                   }
-
                 </div>
               </div>
 
@@ -423,7 +412,6 @@ if (number.length > 0) {
                       ""
                   }
                 </div>
-
               </div>
 
               <div className="date-error">
@@ -439,12 +427,9 @@ if (number.length > 0) {
                       ""
                   }
                 </div>
-
               </div>
             </div>
           </div>
-
-
 
           <div className="input-container">
             <label htmlFor="email">Email
@@ -458,11 +443,10 @@ if (number.length > 0) {
                 className={emailError ? 'error-border' : 'input-field'} />
             </label> <br />
 
-
             {
               emailError &&
-                <p className="error-message">Enter a proper email address
-                </p> 
+              <p className="error-message">Enter a proper email address
+              </p>
             }
           </div>
           <div className="input-container">
@@ -482,12 +466,12 @@ if (number.length > 0) {
             <div>
               {passError &&
                 <p className="error-message">
-                <span className='pass-error'>
-                   Password is required
+                  <span className='pass-error'>
+                    Password is required
                   </span>
                   <span className='pass-error'>
-                      {length && "Length of Password must be 8 or more than 8 "}
-                    </span>
+                    {length && "Length of Password must be 8 or more than 8 "}
+                  </span>
                   <span className='pass-error'>
                     {!length && upperCase && "Password must contain at least one uppercase letter. "
                     }
@@ -496,19 +480,15 @@ if (number.length > 0) {
                     {!length && !upperCase && symbols && "Password must contain at least one special character. "}
                   </span>
                   <span className='pass-error'>
-                    {!length && !upperCase && !symbols&& lowerCase && "Password must contain at least one lowercase letter. "}
+                    {!length && !upperCase && !symbols && lowerCase && "Password must contain at least one lowercase letter. "}
                   </span>
                   <span className='pass-error'>
-                    {!length && !upperCase && !symbols&& !lowerCase && number && "Password must contain at least one number. "}
-
-                
+                    {!length && !upperCase && !symbols && !lowerCase && number && "Password must contain at least one number. "}
                   </span>
-             
                 </p>
               }
             </div>
           </div>
-
 
           <div className="input-container">
             <label htmlFor="confirmPassword">Confirm Password

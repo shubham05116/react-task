@@ -66,7 +66,7 @@ margin-top: 12px; */
   /* margin-bottom: 30px; */
 }
 
-.date-error{
+.date-error {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,6 @@ margin-top: 12px; */
   padding-left: 10px;
 }
 
-
 .form-container .input-container input::placeholder {
   color: #4d5c6f;
   font-size: 18px;
@@ -90,14 +89,12 @@ margin-top: 12px; */
   line-height: 27px;
 }
 
-.error-message{
+.error-message {
   color: #da1e28;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
-  
 }
-
 
 .error-border {
   width: 422px;
@@ -168,7 +165,6 @@ margin-top: 12px; */
   border-radius: 4px;
   font-weight: 700;
   font-size: 18px;
-  
 }
 
 .date {
@@ -190,7 +186,7 @@ margin-top: 12px; */
   justify-content: space-between;
 }
 
-.date-border{
+.date-border {
   width: 124px;
   height: 50px;
   border-radius: 4px;
@@ -204,14 +200,13 @@ margin-top: 12px; */
   line-height: 27px;
 }
 
-.required-error{
+.required-error {
   display: block;
   font-size: 10px;
   color: #da1e28;
-
 }
 
-.nameStar{
+.nameStar {
   color: red;
   font-size: 18px;
   font-weight: 700;
@@ -222,7 +217,7 @@ margin-top: 12px; */
   left: 125px;
 }
 
-.contactStar{
+.contactStar {
   color: red;
   font-size: 18px;
   font-weight: 700;
@@ -233,7 +228,7 @@ margin-top: 12px; */
   left: 175px;
 }
 
-.emailStar{
+.emailStar {
   color: red;
   font-size: 18px;
   font-weight: 700;
@@ -242,10 +237,9 @@ margin-top: 12px; */
   position: absolute;
   top: 395px;
   left: 89px;
-
 }
 
-.passStar{
+.passStar {
   color: red;
   font-size: 18px;
   font-weight: 700;
@@ -254,10 +248,9 @@ margin-top: 12px; */
   position: absolute;
   top: 503px;
   left: 122px;
-
 }
 
-.confirmStar{
+.confirmStar {
   color: red;
   font-size: 18px;
   font-weight: 700;
@@ -266,17 +259,12 @@ margin-top: 12px; */
   position: absolute;
   top: 615px;
   left: 190px;
-
 }
 
-.pass-error{
-display: block;
-font-size: 10px;
-
+.pass-error {
+  display: block;
+  font-size: 10px;
 }
-
-
-
 
 .form-container .input-container input::placeholder::after {
   content: "*";
@@ -336,8 +324,6 @@ font-size: 10px;
     box-shadow: 0px 4px 0px 0px #00000014;
   }
 
-  
-
   .submit-btn {
     width: 328px;
     height: 50px;
@@ -362,14 +348,14 @@ font-size: 10px;
   .success {
     width: 328px;
     font-size: 18px;
-line-height: 27px;
+    line-height: 27px;
     position: absolute;
     top: 755px;
     left: 30px;
     border-radius: 4px;
   }
   .error {
-    width:350px;
+    width: 350px;
     height: 92px;
     font-size: 18px;
     line-height: 27px;
@@ -398,36 +384,28 @@ line-height: 27px;
     padding-right: 5px;
   }
 
-  
-.nameStar{
-  
-  top: 60px;
-  left: 126px;
-}
+  .nameStar {
+    top: 60px;
+    left: 126px;
+  }
 
-.contactStar{
- 
-  top: 152px;
-  left: 175px;
-}
+  .contactStar {
+    top: 152px;
+    left: 175px;
+  }
 
-.emailStar{
- 
-  top: 345px;
-  left: 89px;
+  .emailStar {
+    top: 345px;
+    left: 89px;
+  }
 
-}
+  .passStar {
+    top: 439px;
+    left: 122px;
+  }
 
-.passStar{
-  top: 439px;
-  left: 122px;
-
-}
-
-.confirmStar{
-  
-  top: 532px;
-  left: 190px;
-
-}
+  .confirmStar {
+    top: 532px;
+    left: 190px;
+  }
 }
