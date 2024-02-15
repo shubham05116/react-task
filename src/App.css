@@ -1,38 +1,433 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+  height: 1024px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  width: 100vw;
+  height: 1024px;
+  background-color: #252f3d;
+  height: 56.83px;
+}
+.navbar .logo {
+  width: 294px;
+  height: 32px;
+  /* margin-left: 166px;
+margin-top: 12px; */
+  position: relative;
+  left: 166px;
+  top: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-container {
+  width: 502px;
+  height: 802px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.main-container .title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3642;
+  line-height: 30px;
+  margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-container {
+  height: 690px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 8px;
+  padding: 20px 10px;
+  box-shadow: 0px 4px 30px 0px #00000014;
+  position: relative;
+}
+
+.form-container .input-container {
+  width: 422px;
+  height: 83px;
+  margin: 10px 30px;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  /* margin-bottom: 30px; */
+}
+
+.date-error{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form-container .input-container .input-field {
+  width: 422px;
+  height: 50px;
+  border: 1px solid #a5b6cd;
+  border-radius: 4px;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+
+.form-container .input-container input::placeholder {
+  color: #4d5c6f;
+  font-size: 18px;
+  padding-left: 1px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.error-message{
+  color: #da1e28;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  
+}
+
+
+.error-border {
+  width: 422px;
+  height: 50px;
+  border: 1px solid #da1e28;
+  border-radius: 4px;
+  font-size: 18px;
+  padding-left: 4px;
+}
+
+.form-button {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+  margin: 30px 0;
+}
+.submit-btn {
+  padding: 11px 34px 11px 34px;
+  border-radius: 6px;
+  background-color: #127c95;
+  border: 1px solid #127c95;
   color: white;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.cancel-btn {
+  padding: 11px 34px 11px 34px;
+  border-radius: 6px;
+  background: white;
+  border: 1px solid #127c95;
+  color: #127c95;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.success {
+  background: #cdfadc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 400px;
+  position: absolute;
+  padding: 24px 32px 24px 32px;
+  top: 145px;
+  left: 930px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 410px;
+  background: #ffc0c0;
+  position: absolute;
+  padding: 24px 32px 24px 32px;
+  top: 145px;
+  left: 930px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 18px;
+  
+}
+
+.date {
+  width: 124px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #a5b6cd;
+  margin: 10px;
+  color: #4d5c6f;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-border{
+  width: 124px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #d20808;
+  margin: 10px;
+  color: #b4b4b4;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.required-error{
+  display: block;
+  font-size: 10px;
+  color: #da1e28;
+
+}
+
+.nameStar{
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  padding-left: 10px;
+  position: absolute;
+  top: 66px;
+  left: 125px;
+}
+
+.contactStar{
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  padding-left: 10px;
+  position: absolute;
+  top: 172px;
+  left: 175px;
+}
+
+.emailStar{
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  padding-left: 10px;
+  position: absolute;
+  top: 395px;
+  left: 89px;
+
+}
+
+.passStar{
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  padding-left: 10px;
+  position: absolute;
+  top: 503px;
+  left: 122px;
+
+}
+
+.confirmStar{
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  padding-left: 10px;
+  position: absolute;
+  top: 615px;
+  left: 190px;
+
+}
+
+.pass-error{
+display: block;
+font-size: 10px;
+
+}
+
+
+
+
+.form-container .input-container input::placeholder::after {
+  content: "*";
+  color: red;
+}
+
+@media only screen and (max-width: 375px) {
+  .navbar .logo {
+    width: 148px;
+    height: 16px;
+    position: relative;
+    left: 17px;
+    top: 16px;
   }
-  to {
-    transform: rotate(360deg);
+  .main-container {
+    height: 1020px;
   }
+  .main-container .title {
+    margin-left: 30px;
+  }
+
+  .form-container {
+    width: 355px;
+    height: 604px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    padding: 20px 10px;
+    box-shadow: 0px 4px 30px 0px #00000014;
+  }
+
+  .form-container .input-container {
+    width: 328px;
+    height: 83px;
+    margin: 3px 30px;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .form-container .input-container .input-field {
+    width: 308px;
+    height: 50px;
+    border: 1px solid #a5b6cd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .form-button {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0px 4px 0px 0px #00000014;
+  }
+
+  
+
+  .submit-btn {
+    width: 328px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .cancel-btn {
+    width: 328px;
+    height: 50px;
+    border-radius: 4px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .success {
+    width: 328px;
+    font-size: 18px;
+line-height: 27px;
+    position: absolute;
+    top: 755px;
+    left: 30px;
+    border-radius: 4px;
+  }
+  .error {
+    width:350px;
+    height: 92px;
+    font-size: 18px;
+    line-height: 27px;
+    position: absolute;
+    top: 755px;
+    left: 12px;
+  }
+
+  .error-message {
+    width: 291px;
+    height: 16px;
+    font-size: 12px;
+  }
+  .error-border {
+    width: 291px;
+  }
+
+  .date {
+    width: 90px;
+    height: 50px;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 12px;
+    color: #4d5c6f;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  
+.nameStar{
+  
+  top: 60px;
+  left: 126px;
+}
+
+.contactStar{
+ 
+  top: 152px;
+  left: 175px;
+}
+
+.emailStar{
+ 
+  top: 345px;
+  left: 89px;
+
+}
+
+.passStar{
+  top: 439px;
+  left: 122px;
+
+}
+
+.confirmStar{
+  
+  top: 532px;
+  left: 190px;
+
+}
 }
