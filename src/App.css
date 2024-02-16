@@ -32,7 +32,6 @@ margin-top: 12px; */
   width: 502px;
   height: 802px;
   margin: 0 auto;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
 }
@@ -52,10 +51,9 @@ margin-top: 12px; */
   border-radius: 8px;
   padding: 20px 10px;
   box-shadow: 0px 4px 30px 0px #00000014;
-  position: relative;
 }
 
-.form-container .input-container {
+.input-container {
   width: 422px;
   height: 83px;
   margin: 10px 30px;
@@ -64,24 +62,21 @@ margin-top: 12px; */
   font-weight: 700;
   line-height: 24px;
   /* margin-bottom: 30px; */
+  
 }
 
-.date-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.form-container .input-container .input-field {
+.input-field {
   width: 422px;
   height: 50px;
   border: 1px solid #a5b6cd;
   border-radius: 4px;
   font-size: 18px;
   padding-left: 10px;
+  
 }
 
-.form-container .input-container input::placeholder {
+input::placeholder {
   color: #4d5c6f;
   font-size: 18px;
   padding-left: 1px;
@@ -93,7 +88,7 @@ margin-top: 12px; */
   color: #da1e28;
   font-weight: 400;
   font-size: 12px;
-  line-height: 12px;
+  /* line-height: 12px; */
 }
 
 .error-border {
@@ -168,7 +163,7 @@ margin-top: 12px; */
 }
 
 .date {
-  width: 124px;
+  width: 115px;
   height: 50px;
   border-radius: 4px;
   border: 1px solid #a5b6cd;
@@ -183,7 +178,7 @@ margin-top: 12px; */
 
 .date-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .date-border {
@@ -266,41 +261,37 @@ margin-top: 12px; */
   font-size: 10px;
 }
 
-.form-container .input-container input::placeholder::after {
-  content: "*";
-  color: red;
-}
 
-@media only screen and (max-width: 375px) {
+
+@media only screen and (max-width: 455px) {
   .navbar .logo {
     width: 148px;
     height: 16px;
-    position: relative;
     left: 17px;
     top: 16px;
   }
-  .main-container {
-    height: 1020px;
-  }
+
   .main-container .title {
     margin-left: 30px;
   }
 
   .form-container {
     width: 355px;
-    height: 604px;
+    /* height: 604px; */
     display: flex;
     flex-direction: column;
     gap: 10px;
     border-radius: 8px;
     padding: 20px 10px;
-    box-shadow: 0px 4px 30px 0px #00000014;
+    box-shadow: none;
+    margin-left: 10px;
+    margin-right: 16px;
   }
 
   .form-container .input-container {
     width: 328px;
     height: 83px;
-    margin: 3px 30px;
+    /* margin: 3px 30px; */
     color: #333333;
     font-size: 16px;
     font-weight: 700;
@@ -317,11 +308,9 @@ margin-top: 12px; */
   .form-button {
     display: flex;
     flex-direction: column;
-    width: 375px;
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
-    box-shadow: 0px 4px 0px 0px #00000014;
+    width: 100vw;
+    height: 144px;
+    box-shadow: 0px 4px 20px 4px #00000026;
   }
 
   .submit-btn {
@@ -332,49 +321,55 @@ margin-top: 12px; */
     line-height: 20px;
     font-weight: 700;
     cursor: pointer;
+    margin: 0 auto;
+   
   }
 
   .cancel-btn {
     width: 328px;
     height: 50px;
     border-radius: 4px;
-
     font-size: 16px;
     line-height: 20px;
     font-weight: 700;
     cursor: pointer;
+    margin-top: 40px;
+    margin: 0 auto;
+
   }
 
   .success {
     width: 328px;
     font-size: 18px;
     line-height: 27px;
-    position: absolute;
-    top: 755px;
-    left: 30px;
+    position:absolute;
+    top: 790px;
+    left: 37px;
     border-radius: 4px;
   }
-  .error {
-    width: 350px;
-    height: 92px;
+  .error { 
+     width: 310px;
     font-size: 18px;
     line-height: 27px;
-    position: absolute;
-    top: 755px;
-    left: 12px;
+    padding: 10px;
+    position:absolute;
+    top: 825px;
+    left: 37px;
+    border-radius: 4px;
+    margin-bottom: 10px;
   }
 
   .error-message {
     width: 291px;
-    height: 16px;
-    font-size: 12px;
+    height: 12px;
+    font-size: 10px;
   }
   .error-border {
     width: 291px;
   }
 
   .date {
-    width: 90px;
+    width: 85px;
     height: 50px;
     justify-content: space-evenly;
     align-items: center;
